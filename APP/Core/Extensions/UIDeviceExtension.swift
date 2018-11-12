@@ -9,43 +9,76 @@
 import Foundation
 import UIKit
 
-public extension UIDevice {
+extension UIDevice {
+
+    static var width: CGFloat {
+        return UIScreen.main.bounds.size.width
+    }
+
+    static var height: CGFloat {
+        return UIScreen.main.bounds.size.height
+    }
+
+    static var statusNaviBarHeight: Int {
+        return Int(UIApplication.shared.statusBarFrame.size.height) + 44
+    }
+
+    static var tabBarHeight: Int {
+        return UIDevice.isIPhoneX() ? 49 + 34 : 49
+    }
+
+    static var singleLineWidth: CGFloat {
+        return 1 / (UIScreen.main.scale)
+    }
+
+    static var singleLineAdjustOffset: CGFloat {
+        return 1 / (UIScreen.main.scale) / 2
+    }
+
+    // 判断是否是iphone X系列
+    static func isIPhoneX() -> Bool {
+        var isPhoneX = false
+        if #available(iOS 11.0, *) {
+            isPhoneX = (UIApplication.shared.delegate?.window.unsafelyUnwrapped?.safeAreaInsets.bottom)! > CGFloat(0.0)
+        }
+        return isPhoneX
+    }
 
     // 获取app名字
-    public class func appName() -> String {
+    static func appName() -> String {
         let appName:String = (Bundle.main.infoDictionary?["CFBundleDisplayName"] ?? "算你妹") as! String
         return appName
     }
 
-    public class func uuidString() -> String? {
+    static func uuidString() -> String? {
         return UIDevice.current.identifierForVendor?.uuidString
     }
 
-    public class func systemName() -> String {
+    static func systemName() -> String {
         return UIDevice.current.systemName
     }
 
-    public class func systemVersion() -> String {
+    static func systemVersion() -> String {
         return UIDevice.current.systemVersion
     }
 
-    public class func systemFloatVersion() -> Float {
+    static func systemFloatVersion() -> Float {
         return (systemVersion() as NSString).floatValue
     }
 
-    public class func deviceName() -> String {
+    static func deviceName() -> String {
         return UIDevice.current.name
     }
 
-    public class func deviceLanguage() -> String {
+    static func deviceLanguage() -> String {
         return Bundle.main.preferredLocalizations[0]
     }
 
-    public class func isPhone() -> Bool {
+    static func isPhone() -> Bool {
         return UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.phone
     }
 
-    public class func isPad() -> Bool {
+    static func isPad() -> Bool {
         return UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad
     }
 

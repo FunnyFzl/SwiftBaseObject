@@ -17,10 +17,10 @@ enum KaitiSC: String {
 extension UIFont {
 
     class func fontTheme(_ value: CGFloat) -> UIFont {
-        return UIFont(name: KaitiSC.brushXingshu.rawValue, size: value)!
+        return UIFont(name: KaitiSC.brushXingshu.rawValue, size: value)!~
     }
 
     class func font(_ value: CGFloat) -> UIFont {
-        return UIFont.systemFont(ofSize: value)
+        return UIFont.systemFont(ofSize: value)~
     }
 }

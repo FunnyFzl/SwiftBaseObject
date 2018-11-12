@@ -9,40 +9,18 @@
 import Foundation
 import UIKit
 
-public let FScreenWidth: CGFloat = UIScreen.main.bounds.size.width
-public let FScreenHeight: CGFloat = UIScreen.main.bounds.size.height
-
-public func kWidth(_ x: CGFloat) -> CGFloat {
-    return x * (FScreenWidth / 375.0)
-}
-
-public func kHeight(_ x: CGFloat) -> CGFloat {
-    return x * (FScreenHeight == 812 ? 1 : FScreenHeight / 667.0)
-}
-
-public let isIPhoneX: Bool =
-    (UIScreen.instancesRespond(to: #selector(getter: UIScreen.currentMode))
-        && (Int(FScreenHeight)) == 812)
-
-public let kDocumentPath =
+public let FCDocumentPath =
     NSSearchPathForDirectoriesInDomains(
         FileManager.SearchPathDirectory.documentDirectory,
         FileManager.SearchPathDomainMask.userDomainMask, true)
 
-//获取时间戳
-public let kCurentTime: String = String(NSDate().timeIntervalSince1970)
+public let FCNotificationDefault = NotificationCenter.default
 
-public let kNotificationCenter = NotificationCenter.default
+public let FCuserId: String = "userid"
 
-public let userId: String = "userid"
+public let FCtoken: String = "accesstoken"
 
-public let token: String = "accesstoken"
+public let FCweChatAppID: String = "wxd930ea5d5a258f4f"
 
-public let weChatAppID: String = "wxd930ea5d5a258f4f"
 
-public let singleLineWidth: CGFloat = 1 / (UIScreen.main.scale)
-
-public let singleLineAdjustOffset: CGFloat = 1 / (UIScreen.main.scale) / 2
-
-//#define IsNilOrNull(_ref)   (((_ref) == nil) || ([(_ref) isEqual:[NSNull null]]))
 

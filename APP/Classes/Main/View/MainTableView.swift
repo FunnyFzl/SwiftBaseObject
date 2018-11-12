@@ -12,7 +12,7 @@ class MainTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
 
     static let identifier = "MainTableViewCellIdentifier"
 
-    override init(frame: CGRect, style: UITableViewStyle) {
+    override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
 
         self.removeTableFooterView()

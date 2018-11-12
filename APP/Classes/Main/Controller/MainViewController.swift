@@ -15,6 +15,11 @@ class MainViewController: UIViewController {
 
         self.navigationItem.title = UIDevice.appName()
 
+        if #available(iOS 12.0, *) {
+            print(2222)
+        } else {
+            // Fallback on earlier versions
+        }
 
         setupUI()
     }
@@ -27,7 +32,7 @@ class MainViewController: UIViewController {
 
     let tableView: MainTableView = {
 
-        let tableView: MainTableView = MainTableView.init(frame: CGRect.init(x: 0, y: 0, width: FScreenWidth, height: FScreenHeight), style: .plain)
+        let tableView: MainTableView = MainTableView.init(frame: CGRect.init(x: 0, y: 0, width: UIDevice.width, height: UIDevice.height), style: .plain)
         tableView.backgroundColor = UIColor.white
         
         return tableView

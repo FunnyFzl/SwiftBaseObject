@@ -29,7 +29,7 @@ class BaseNavigationController: UINavigationController {
         self.navigationBar.tintColor = UIColor.singleColor(51, 1)
 
         #if swift(>=4.0)
-        self.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.singleColor(51, 1), NSAttributedStringKey.font: UIFont.fontTheme(18)]
+        self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.singleColor(51, 1), NSAttributedString.Key.font: UIFont.fontTheme(18)]
         #elseif swift(>=3.0)
         self.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.singleColor(51, 1), NSFontAttributeName: UIFont.fontTheme(18)];
         #endif
