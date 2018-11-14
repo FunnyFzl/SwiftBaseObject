@@ -8,19 +8,7 @@
 
 import UIKit
 
-//楷体
-enum KaitiSC: String {
-    //李旭科毛笔行书
-    case brushXingshu = "LiXuKe"
-}
-
 extension UIFont {
 
-    class func fontTheme(_ value: CGFloat) -> UIFont {
-        return UIFont(name: KaitiSC.brushXingshu.rawValue, size: value)!~
-    }
 
-    class func font(_ value: CGFloat) -> UIFont {
-        return UIFont.systemFont(ofSize: value)~
-    }
 }

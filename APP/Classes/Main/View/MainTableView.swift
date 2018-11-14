@@ -12,6 +12,10 @@ class MainTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
 
     static let identifier = "MainTableViewCellIdentifier"
 
+    convenience init(frame: CGRect, style: UITableView.Style, name: String) {
+        self.init(frame: frame, style: style)
+    }
+
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
 
@@ -45,6 +49,8 @@ class MainTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+
+        print(UIDevice.height)
     }
 
     required init?(coder aDecoder: NSCoder) {

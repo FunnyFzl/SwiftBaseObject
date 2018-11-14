@@ -23,7 +23,7 @@ class MainTableViewCell: UITableViewCell {
 
     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.font = UIFont.fontTheme(35)
+        titleLabel.font = UIFont.systemFont(ofSize: 35)~
         titleLabel.textColor = UIColor.init(51, 51, 51, 1)
         titleLabel.textAlignment = .center
         return titleLabel

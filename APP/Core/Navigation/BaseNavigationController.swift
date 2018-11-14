@@ -26,10 +26,10 @@ class BaseNavigationController: UINavigationController {
         appearance.setBackButtonTitlePositionAdjustment(UIOffset.init(horizontal: -80, vertical: 0.0), for: .default)
         self.navigationBar.isTranslucent = true
         self.navigationBar.barTintColor = .white
-        self.navigationBar.tintColor = UIColor.singleColor(51, 1)
+        self.navigationBar.tintColor = UIColor.init(gray: 51)
 
         #if swift(>=4.0)
-        self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.singleColor(51, 1), NSAttributedString.Key.font: UIFont.fontTheme(18)]
+        self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.init(gray: 51), NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18)]
         #elseif swift(>=3.0)
         self.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.singleColor(51, 1), NSFontAttributeName: UIFont.fontTheme(18)];
         #endif

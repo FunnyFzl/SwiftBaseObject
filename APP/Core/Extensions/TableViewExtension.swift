@@ -34,25 +34,25 @@ extension UITableView {
     }
 
     // MARK: - 去除FooterView
-    public func removeTableFooterView() -> () {
+    func removeTableFooterView() -> () {
         self.tableFooterView = UIView()
     }
 
     // MARK: - 添加下拉刷新
-    public func addPullDownToRefresh() -> () {
+    func addPullDownToRefresh() -> () {
 
         let header: MJRefreshNormalHeader = MJRefreshNormalHeader.init(refreshingTarget: self, refreshingAction: #selector(pullDown))
         header.setTitle("谁在拉我？！", for: MJRefreshState.idle)
         header.setTitle("快松开！", for: MJRefreshState.pulling)
         header.setTitle("这是自由的感觉...", for: MJRefreshState.refreshing)
-        header.stateLabel.font = UIFont.fontTheme(12)
-        header.lastUpdatedTimeLabel.font = UIFont.fontTheme(12)
+        header.stateLabel.font = UIFont.systemFont(ofSize: 12)~
+        header.lastUpdatedTimeLabel.font = UIFont.systemFont(ofSize: 12)~
         header.isAutomaticallyChangeAlpha = true
         self.mj_header = header
     }
 
     // MARK: - 添加上拉加载
-    public func addPullUpToRefresh() -> () {
+    func addPullUpToRefresh() -> () {
 
         let footer: MJRefreshAutoNormalFooter = MJRefreshAutoNormalFooter.init(refreshingTarget: self, refreshingAction: #selector(pullUp))
         footer.setTitle("别拉我!", for: MJRefreshState.noMoreData)
@@ -62,7 +62,7 @@ extension UITableView {
     }
 
     // MARK: - 下拉刷新action
-    @objc public func pullDown() -> () {
+    @objc func pullDown() -> () {
 
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             self.mj_header.endRefreshing()
@@ -70,7 +70,7 @@ extension UITableView {
     }
 
     // MARK: - 上拉刷新action
-    @objc public func pullUp() -> () {
+    @objc func pullUp() -> () {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             self.mj_footer.endRefreshing()
         }

@@ -15,10 +15,10 @@ class BaseTabBarItemContentView: ESTabBarItemContentView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        textColor = UIColor.singleColor(51, 1).withAlphaComponent(0.5)
-        highlightTextColor = UIColor.singleColor(51, 1)
-        iconColor = UIColor.singleColor(51, 1).withAlphaComponent(0.5)
-        highlightIconColor = UIColor.singleColor(51, 1)
+        textColor = UIColor(gray: 51, alpha: 0.5)
+        highlightTextColor = UIColor(gray: 51)
+        iconColor = UIColor(gray: 51, alpha: 0.5)
+        highlightIconColor = UIColor(gray: 51)
         insets = UIEdgeInsets.init(top: 0, left: 0, bottom: 2, right: 0)
     }
 
@@ -35,7 +35,7 @@ class BaseTabBarItemContentView: ESTabBarItemContentView {
     override func updateLayout() {
         super.updateLayout()
 
-        self.titleLabel.font = UIFont.fontTheme(10)
+        self.titleLabel.font = UIFont.systemFont(ofSize: 10)
     }
 
     func bounceAnimation() {

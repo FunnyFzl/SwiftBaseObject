@@ -19,12 +19,20 @@ extension UIDevice {
         return UIScreen.main.bounds.size.height
     }
 
-    static var statusNaviBarHeight: Int {
-        return Int(UIApplication.shared.statusBarFrame.size.height) + 44
+    static var statusNaviBarHeight: CGFloat {
+        return UIApplication.shared.statusBarFrame.size.height + 44
     }
 
-    static var tabBarHeight: Int {
+    static var tabBarHeight: CGFloat {
         return UIDevice.isIPhoneX() ? 49 + 34 : 49
+    }
+
+    static var screenHeightWithoutNavigation: CGFloat {
+        return UIDevice.height - UIDevice.statusNaviBarHeight
+    }
+
+    static var screenHeightWithoutNavigationTabBar: CGFloat {
+        return UIDevice.height - UIDevice.statusNaviBarHeight - UIDevice.tabBarHeight
     }
 
     static var singleLineWidth: CGFloat {
@@ -46,8 +54,79 @@ extension UIDevice {
 
     // 获取app名字
     static func appName() -> String {
-        let appName:String = (Bundle.main.infoDictionary?["CFBundleDisplayName"] ?? "算你妹") as! String
-        return appName
+        if let bundleDisplayName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String {
+            return bundleDisplayName
+        } else if let bundleName = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String {
+            return bundleName
+        } else {
+            return "APP"
+        }
+    }
+
+    static var appVersion: String? {
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+    }
+
+    static var appBuild: String? {
+        return Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String
+    }
+
+    public static var appVersionAndBuild: String? {
+        if appVersion != nil && appBuild != nil {
+            if appVersion == appBuild {
+                return "v\(appVersion!)"
+            } else {
+                return "v\(appVersion!)(\(appBuild!))"
+            }
+        }
+        return nil
+    }
+
+    static var appBundleID: String? {
+        return Bundle.main.bundleIdentifier
+    }
+
+    static var deviceVersion: String {
+        var size: Int = 0
+        sysctlbyname("hw.machine", nil, &size, nil, 0)
+        var machine = [CChar](repeating: 0, count: Int(size))
+        sysctlbyname("hw.machine", &machine, &size, nil, 0)
+        return String(cString: machine)
+    }
+
+    static func detectScreenShot(_ action: @escaping () -> Void) {
+        let mainQueue = OperationQueue.main
+        _ = NotificationCenter.default.addObserver(forName: UIApplication.userDidTakeScreenshotNotification, object: nil, queue: mainQueue) { _ in
+            action()
+        }
+    }
+
+    static var isDebug: Bool {
+    #if DEBUG
+        return true
+    #else
+        return false
+    #endif
+    }
+
+    static var isRelease: Bool {
+    #if DEBUG
+        return false
+    #else
+        return true
+    #endif
+    }
+
+    static var isSimulator: Bool {
+    #if targetEnvironment(simulator)
+        return true
+    #else
+        return false
+    #endif
+    }
+
+    static var screenOrientation: UIInterfaceOrientation {
+        return UIApplication.shared.statusBarOrientation
     }
 
     static func uuidString() -> String? {
