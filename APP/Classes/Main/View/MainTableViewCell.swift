@@ -34,6 +34,10 @@ class MainTableViewCell: UITableViewCell {
         titleLabel.frame = contentView.bounds
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
+
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
