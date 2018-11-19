@@ -1,5 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '10.0'
+platform :ios, '9.0'
 use_frameworks!
 inhibit_all_warnings!
 
@@ -19,6 +19,7 @@ target 'APP' do
     pod 'Realm', '3.11.1'
     pod 'FSCalendar'
     pod 'JXCategoryView'
+    pod 'AloeStackView'
     pod 'SwiftyAttributes', '5.0.0'               # 用于属性字符串的Swifty API
     pod 'PKHUD', '5.2.0'                          # 适用于iOS 8的基于Swift的Apple HUD
     pod 'Hue', '3.0.1'                            # Hue是您需要的一体化着色实用程序
@@ -26,7 +27,6 @@ target 'APP' do
     pod 'NotificationBannerSwift', '1.8.0'        # 在iOS中显示高度可自定义的应用通知横幅的最简单方法
     pod 'Spring', :git => 'https://github.com/MengTo/Spring.git'# 一个简化Swift中iOS动画的库
     pod 'KeychainAccess', '3.1.2'                 # 轻量级 Keychain 封装，支持 TouchID 与 Keychain 整合
-    pod 'CocoaLumberjack/Swift', '3.4.2'          # 快速，简单但功能强大且灵活的Mac和iOS日志框架
     pod "SkeletonView"                            # 等待骨架（未更新）
     pod "ViewAnimator"                            # iOS UIView动画的库
     pod "Gemini"                                  # 用于iOS的丰富的基于滚动的动画框架
@@ -41,6 +41,8 @@ target 'APP' do
     pod 'SwiftEntryKit', '0.8.4'                  # iOS的横幅
     pod 'Charts', '3.2.1'                         # 图表
     pod 'SwiftTheme', '0.4.3'
+    pod 'CocoaDebug', :configurations => ['Debug']
+    pod 'XCGLogger'
 
     #   pod 'EZSwiftExtensions'                      # 提供了一系列对于 Swift 标准库、方法与 UIKit 的扩展
     #   pod 'WeScan'                                 # 轻松地为您的iOS应用添加扫描功能（未更新）

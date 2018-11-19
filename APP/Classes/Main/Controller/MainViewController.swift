@@ -16,12 +16,13 @@ class MainViewController: UIViewController {
         self.navigationItem.title = UIDevice.appName()
 
         if #available(iOS 12.0, *) {
-            print(2222)
+
         } else {
             // Fallback on earlier versions
         }
 
         setupUI()
+
     }
 
     override func setupUI() {

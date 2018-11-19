@@ -8,6 +8,10 @@
 
 import UIKit
 
+#if DEBUG
+import CocoaDebug
+#endif
+
 @UIApplicationMain
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = BaseTabBarController()
 
         self.window?.makeKeyAndVisible()
+
+        self.initLog()
 
         return true
     }
@@ -44,20 +50,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate {
 
-    func initLog() -> () {
-//        DDLog.add(DDTTYLogger.sharedInstance) // TTY = Xcode console
-//        DDLog.add(DDASLLogger.sharedInstance) // ASL = Apple System Logs
-//
-//        let fileLogger: DDFileLogger = DDFileLogger() // File Logger
-//        fileLogger.rollingFrequency = TimeInterval(60*60*24)  // 24 hours
-//        fileLogger.logFileManager.maximumNumberOfLogFiles = 7
-//        DDLog.add(fileLogger)
-//
-//        DDLogVerbose("Verbose")
-//        DDLogDebug("Debug")
-//        DDLogInfo("Info")
-//        DDLogWarn("Warn")
-//        DDLogError("Error")
+    final private func initLog() -> () {
+
+        let log = XCGLogger.default
+        #if DEBUG
+        log.setup(level: .debug, showThreadName: true, showLevel: true, showFileNames: true, showLineNumbers: true)
+        #else
+        log.setup(level: .severe, showThreadName: true, showLevel: true, showFileNames: true, showLineNumbers: true)
+        #endif
+
+
+        #if DEBUG
+        CocoaDebug.enable()
+        #endif
     }
 }
 

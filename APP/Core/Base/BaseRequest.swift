@@ -47,6 +47,4 @@ extension BaseService : TargetType {
     var headers: [String : String]? {
         return ["Content-Type" : "application/json;charset=utf-8;text/html"]
     }
-
-    
 }
